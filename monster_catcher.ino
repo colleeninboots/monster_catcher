@@ -15,7 +15,7 @@ const int POT_PIN = A3;
 Servo topServo;
 Servo bottomServo;
 
-int shut = 1;
+int shut = 1; // initialize the teeth to be shut
 
 int lastMonster = 0;
 unsigned long lastTimeStampMs = 0;
@@ -37,19 +37,14 @@ void loop() {
   int isOpenPushed = digitalRead(OPEN_PIN);
   int isShutPushed = digitalRead(SHUT_PIN);
 
-  //buttonResponse(isOpenPushed, isShutPushed);
+  //buttonResponse(isOpenPushed, isShutPushed); Can be used with a push button for debugging.
     
   int potValue = analogRead(POT_PIN);
   potResponse(potValue);
 }
 
-// TODO
-void isShut() {
-  
-}
-
 /* Responds to button states: isOpenPushed and isShutPushed. 
- * Prioritizes open if both are pushed.
+ * Prioritizes open if both are pushed. Used for debugging.
  */
 void buttonResponse(int isOpenPushed, int isShutPushed) {
   if (isOpenPushed && shut) { 
@@ -62,7 +57,7 @@ void buttonResponse(int isOpenPushed, int isShutPushed) {
   }
 }
 
-
+/* Opens the "trap", or teeth, of the Monster Catcher. */
 void openTrap() {
   if (!shut) { // Don't do anything if servo state is already open.
     return;
@@ -76,6 +71,7 @@ void openTrap() {
   shut = 0;
 }
 
+/* Shuts the "trap", or teeth, of the Monster Catcher. */
 void shutTrap() {
   if (shut) { // Don't do anything if servo state is already shut.
     return;
@@ -86,7 +82,7 @@ void shutTrap() {
   shut = 1;
 }
 
-// if the monster type (color trimpot) stays the same for 10 seconds, shut the trap
+/* If the monster type (color trimpot) stays the same for 10 seconds, shut the trap. */ 
 void delayedShut(int thisMonster) {
   unsigned long thisTimeStampMs = millis();
 
@@ -105,8 +101,8 @@ void delayedShut(int thisMonster) {
   lastMonster = thisMonster;
 }
 
-
-
+/* Moves servos to open or closed state. You may need to adjust maxAngle based on how 
+big your teeth are or how long the hinges are. */
 void moveServos(Servo servoToMax, Servo servoTo0) {
   int maxAngle = 90;
   int stepSize = 10; // size of each step in degrees
@@ -123,12 +119,9 @@ void moveServos(Servo servoToMax, Servo servoTo0) {
   }
 }
 
+/* Changed the color of the LED based on the angle of the potentiometer */
 void potResponse(int potValue) {
   int monsterType = map(potValue, 0, 1025, 0, 6);
-//  Serial.print("potValue: ");
-//  Serial.print(potValue);
-//  Serial.print(" | monster: ");
-//  Serial.println(monsterType);
 
   switch (monsterType) {
     case 0: // ALL
@@ -162,6 +155,8 @@ void potResponse(int potValue) {
   }
 }
 
+/* Sets the RGB LED value. Coded for common cathode RGB LED. If you have a common anode,
+remove "255 - " from each line. */
 void setColorRGB(int red, int green, int blue) {
   analogWrite(RED_PIN, 255 - red);
   analogWrite(GREEN_PIN, 255 - green);
