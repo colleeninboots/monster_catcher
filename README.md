@@ -1,17 +1,17 @@
 # The Monster Catcher
 
-The Monster Catcher is a nightlight that keeps monsters at bay. This repo holds the Arduino firmware needed to make your own. Check out the [Monster Catcher instructable](https://www.google.com "Instructable") for the full set of steps.
+The Monster Catcher is a night light that keeps monsters at bay. This repo holds the Arduino firmware needed to make your own. Check out the **[Monster Catcher instructable](https://www.instructables.com "Instructable")** for the full set of steps.
 
 ## Project Description
 
-This nightlight doubles as a trap to catch monsters under the bed! Before you go to sleep at night, place it under your bed and it will catch any monster under there. It even keeps a light on all night to make sure new monsters stay away.
+The Monster Catcher is a nightlight doubles as a trap to catch monsters under the bed! Before you go to sleep at night, place it under your bed and it will catch any monster under there. It even keeps a light on all night to make sure new monsters stay away. See it in action in this **[video on youtube](https://www.youtube.com/watch?v=iJaVeIyJZwk "Youtube")**.
 
-This instructable makes a great project for parents with a kid who’s afraid of monsters under the bed. The trap can help them sleep easy knowing that any monsters are locked away in the trap and can’t get them.
+Follow **[the Instructable](https:///www.instructables.com "Instructable")** for a great project for parents with a kid who’s afraid of monsters under the bed. The trap can help them sleep easy knowing that any monsters are locked away in the trap and can’t get them.
 
 ## Files
 <dl>
   <dt>monster_catcher.ino</dt>
-  <dd>The main Arduino firmware file for this project. Uploaded to an Uno or Leonardo.</dd>
+  <dd>The main Arduino firmware file for this project. Upload to an Uno or Leonardo.</dd>
   
   <dt>monster_catcher_schematic.png</dt>
   <dd>The schematic for the electronics portion of the project.</dd>
